@@ -1,5 +1,6 @@
 package main;
 
+import com.mongodb.client.MongoCollection;
 import dbmanager.MongodDBManager;
 import org.bson.Document;
 
@@ -11,7 +12,7 @@ public class MongoApplication {
     public static void main(String[] args){
         MongodDBManager mongodDBManager = MongodDBManager.newInstance();
         mongodDBManager.getConnectDB();
-        Document users = new Document("name", "Tran Van Trai").append("age", 23).append("address", "614 DBP F.11 Q.10");
-
+        Document users = new Document("name", "Tran Van Trai 2222").append("age", 23).append("address", "614 DBP F.11 Q.10");
+        mongodDBManager.inserOne(MongodDBManager.USERS_COLLECTION, users);
     }
 }

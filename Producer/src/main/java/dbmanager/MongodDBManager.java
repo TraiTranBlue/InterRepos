@@ -42,15 +42,18 @@ public class MongodDBManager {
     public void inserOne(String collectionName, Document document){
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         collection.insertOne(document);
+        System.out.println("Insert one document into " + collection.getNamespace());
     }
 
     public void inserMany(String collectionName, List<Document> documents, InsertManyOptions manyOptions){
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         collection.insertMany(documents, manyOptions);
+        System.out.println("Insert many document into " + collection);
     }
 
     public void inserMany(String collectionName, List<Document> documents){
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         collection.insertMany(documents);
+        System.out.println("Insert many document into " + collection);
     }
 }
