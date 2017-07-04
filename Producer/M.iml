@@ -16,6 +16,7 @@
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver:3.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:bson:3.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:3.4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-async:3.4.0-beta1" level="project" />
     <orderEntry type="library" name="Maven: com.rabbitmq:amqp-client:4.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.21" level="project" />
   </component>

@@ -2,10 +2,12 @@ package dbmanager;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.InsertManyOptions;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import utils.MyContans;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
  */
 public class MongodDBManager {
     public static final String USERS_COLLECTION = "Users";
+    public static final String INVENTORY_COLLECTION = "inventory";
     private static MongodDBManager mongodDBManager;
 
     private MongoClient mongodClient;
@@ -38,6 +41,10 @@ public class MongodDBManager {
         return mongodClient;
     }
 
+    public MongoCollection getCollection(String collectionName){
+        return mongoDatabase.getCollection(collectionName);
+    }
+
 
     public void inserOne(String collectionName, Document document){
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
@@ -56,4 +63,26 @@ public class MongodDBManager {
         collection.insertMany(documents);
         System.out.println("Insert many document into " + collection);
     }
+
+    public Document findOne(String collectionName){
+        MongoCollection collection = mongoDatabase.getCollection(collectionName);
+        return (Document) collection.find().first();
+    }
+
+    public FindIterable findAll(String collectionName){
+        MongoCollection collection = mongoDatabase.getCollection(collectionName);
+        return collection.find();
+    }
+
+    /**
+     * Query document by collection name and param filter
+     * @param collectionName
+     * @param filter
+     * @return FindIterable document
+     */
+    public FindIterable findMany(String collectionName, Bson filter){
+        MongoCollection collection = mongoDatabase.getCollection(collectionName);
+        return collection.find(filter);
+    }
+
 }
