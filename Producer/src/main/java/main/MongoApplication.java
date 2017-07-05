@@ -1,13 +1,16 @@
 package main;
 
 import com.mongodb.Block;
-import com.mongodb.async.SingleResultCallback;
 import com.mongodb.client.model.Filters;
-import dbmanager.MongoDBAsynManager;
+import com.mongodb.client.model.Projections;
+import com.mongodb.client.model.Updates;
 import dbmanager.MongodDBManager;
+import org.bson.BsonDocument;
+import org.bson.BsonString;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static com.mongodb.client.model.Filters.*;
@@ -27,17 +30,17 @@ public class MongoApplication {
             }
         };
         Bson filter = Filters.and(Filters.eq("item", "journal"), Filters.gte("qty", 15));
-        mongodDBManager.getCollection(MongodDBManager.INVENTORY_COLLECTION).find(filter).forEach(documentBlock);
-        MongoDBAsynManager.newInstance().findMany(MongodDBManager.INVENTORY_COLLECTION, filter, new Block<Document>() {
-                    public void apply(Document document) {
-                        System.out.println("===>> Block " + document.toJson());
-                    }
-                },
-                new SingleResultCallback<Void>() {
-                    public void onResult(Void document, Throwable throwable) {
-                        System.out.println("===>> Operator finished");
-                    }
-                });
+        mongodDBManager.getCollection(MongodDBManager.USERS_COLLECTION)
+                .find()
+//                .projection(Projections.fields(Projections.include("qty"), Projections.excludeId()))
+                .forEach(documentBlock);
+        mongodDBManager.getCollection(MongodDBManager.USERS_COLLECTION)
+                .updateOne(Filters.and(Filters.regex("name", "*Dan*")), new Document("$set", new Document("age", 1000).append("name", "Tran Van Dan")));
+        mongodDBManager.getCollection(MongodDBManager.USERS_COLLECTION)
+                .find()
+//                .projection(Projections.fields(Projections.include("qty"), Projections.excludeId()))
+                .forEach(documentBlock);
+        Document document = new Document();
         Scanner scanner = new Scanner(System.in);
         scanner.nextInt();
     }
