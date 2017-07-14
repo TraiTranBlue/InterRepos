@@ -1,15 +1,14 @@
 package dbmanager;
 
 import com.mongodb.Block;
-import com.mongodb.ConnectionString;
 import com.mongodb.ServerAddress;
 import com.mongodb.async.SingleResultCallback;
 import com.mongodb.async.client.*;
-import com.mongodb.client.model.Projections;
+import com.mongodb.async.client.MongoCollection;
+import com.mongodb.async.client.MongoDatabase;
 import com.mongodb.connection.ClusterSettings;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-import utils.MyContans;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,9 +36,13 @@ public class MongoDBAsynManager {
                 .clusterSettings(settings)
                 .build();
         mongoClient = MongoClients.create(clientSettings);
-//        mongoClient = MongoClients.create(new ConnectionString(MyContans.URL_SERVER));
-        mongoDatabase = mongoClient.getDatabase(MyContans.DATA_NAME);
+        mongoDatabase = mongoClient.getDatabase(MongoContans.DATA_NAME);
+
         System.out.println(mongoDatabase.getName() + " Async");
+    }
+
+    public MongoCollection getCollection(String collectionName){
+        return mongoDatabase.getCollection(collectionName);
     }
 
     public void insertOne(String collectionName, Document document, SingleResultCallback<Void> callback){
@@ -57,12 +60,12 @@ public class MongoDBAsynManager {
         collection.find().first(callback);
     }
 
-    public<T, E> void findAll(String collectionName, Block<T> block, SingleResultCallback<E> callback){
+    public<T> void findAll(String collectionName, Block<T> block, SingleResultCallback<Void> callback){
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         collection.find().forEach(block, callback);
     }
 
-    public <T, E> void findMany(String collectionName, Bson filters, Block<T> block, SingleResultCallback<E> callback){
+    public <T> void findMany(String collectionName, Bson filters, Block<T> block, SingleResultCallback<Void> callback){
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         collection.find(filters).forEach(block, callback);
     }

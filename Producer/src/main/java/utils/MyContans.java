@@ -4,8 +4,7 @@ package utils;
  * Created by cpu11118-local on 15/06/2017.
  */
 public class MyContans {
-    public static String URL_SERVER = "mongodb://127.0.0.1:27017";
-    public static String DATA_NAME = "MyDB";
+
     public static String QUEUE_NAME = "QueueHelloWorld";
     public static String HOST_RABBITMQ = "172.17.0.1";
     public static String LOCALHOST_RABBITMQ = "localhost";

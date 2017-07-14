@@ -8,16 +8,13 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.InsertManyOptions;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-import utils.MyContans;
-
 import java.util.List;
 
 /**
  * Created by cpu11118-local on 15/06/2017.
  */
 public class MongodDBManager {
-    public static final String USERS_COLLECTION = "Users";
-    public static final String INVENTORY_COLLECTION = "inventory";
+
     private static MongodDBManager mongodDBManager;
 
     private MongoClient mongodClient;
@@ -30,13 +27,16 @@ public class MongodDBManager {
         return mongodDBManager;
     }
 
+    public MongodDBManager() {
+        getConnectDB();
+    }
 
     public MongoClient getConnectDB(){
         if(mongodClient == null){
-            mongodClient = new MongoClient(new MongoClientURI(MyContans.URL_SERVER));
-            mongoDatabase = mongodClient.getDatabase(MyContans.DATA_NAME);
+            mongodClient = new MongoClient(new MongoClientURI(MongoContans.URL_SERVER));
+            mongoDatabase = mongodClient.getDatabase(MongoContans.DATA_NAME);
             System.out.println("Address connect at path :" + mongodClient.getConnectPoint());
-            System.out.println("Address DB name :" + mongodClient.getDatabase(MyContans.DATA_NAME).getName());
+            System.out.println("Address DB name :" + mongodClient.getDatabase(MongoContans.DATA_NAME).getName());
         }
         return mongodClient;
     }
@@ -83,6 +83,16 @@ public class MongodDBManager {
     public FindIterable findMany(String collectionName, Bson filter){
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         return collection.find(filter);
+    }
+
+    /**
+     * Check collection has document
+     * @param collectionName
+     * @return True if has document other case return false
+     */
+    public boolean checkCollectionExistsDocument(String collectionName){
+        MongoCollection collection = mongoDatabase.getCollection(collectionName);
+        return collection.find().first() != null;
     }
 
 }
