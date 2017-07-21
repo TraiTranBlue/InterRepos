@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <display-name>Webapp2</display-name>
+
+    <!--<servlet>-->
+        <!--<servlet-name></servlet-name>-->
+        <!--<servlet-class>traitv.com.HelloServlet</servlet-class>-->
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>MyServlet</servlet-name>-->
+        <!--<url-pattern>/myservlet.do</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <servlet>
+        <servlet-name>SimpleServlet</servlet-name>
+        <servlet-class>traitv.com.HelloServlet</servlet-class>
+
+    </servlet>
+    <servlet>
+        <servlet-name>V</servlet-name>
+        <servlet-class>traitv.com.V1</servlet-class>
+
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SimpleServlet</servlet-name>
+        <url-pattern>simple.do/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>V</servlet-name>
+        <url-pattern>v1</url-pattern>
+    </servlet-mapping>
+
+    <!--<servlet>-->
+        <!--&lt;!&ndash; class name &ndash;&gt;-->
+        <!--<servlet-name>WeatherServlet</servlet-name>-->
+        <!--&lt;!&ndash; package&ndash;&gt;-->
+        <!--<servlet-class>traitv.com.V2</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>WeatherServlet</servlet-name>-->
+        <!--&lt;!&ndash; address &ndash;&gt;-->
+        <!--<url-pattern>/v2/trai</url-pattern>-->
+    <!--</servlet-mapping>-->
+</web-app>

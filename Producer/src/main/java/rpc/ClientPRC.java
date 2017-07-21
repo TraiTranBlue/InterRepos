@@ -15,7 +15,6 @@ import java.util.concurrent.BlockingQueue;
  * Created by cpu11118-local on 21/06/2017.
  */
 public class ClientPRC extends ConnectRPC {
-
     private String correlationId;
     private String responseQueueName;
 
