@@ -1,5 +1,5 @@
 
-package traitv.com;
+package traitv.com.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

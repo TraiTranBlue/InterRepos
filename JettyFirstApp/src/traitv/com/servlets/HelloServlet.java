@@ -1,5 +1,5 @@
 
-package traitv.com;
+package traitv.com.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +12,6 @@ import java.io.PrintWriter;
 /**
  * Created by cpu11118-local on 21/07/2017.
  */
-@WebServlet(name = "HelloServlet", urlPatterns = {"servlet/hello"})
 public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

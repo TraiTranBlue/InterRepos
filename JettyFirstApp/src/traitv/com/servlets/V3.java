@@ -1,4 +1,4 @@
-package traitv.com;
+package traitv.com.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 /**
  * Created by cpu11118-local on 21/07/2017.
  */
-@WebServlet("/profile/mono")
+@WebServlet("/profile/mysite")
 
 public class V3 extends HttpServlet{
     @Override
@@ -25,5 +25,11 @@ public class V3 extends HttpServlet{
         writer.println(req.getParameter("value1"));
         writer.println(req.getParameter("value2"));
         writer.flush();
+    }
+
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
     }
 }
