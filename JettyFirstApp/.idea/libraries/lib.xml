@@ -1,0 +1,41 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/annotations" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/apache-jsp" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/apache-jstl" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/websocket" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/annotations" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/apache-jsp" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/apache-jstl" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/fcgi" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/http2" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/jaspi" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/jndi" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/setuid" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/spring" />
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/websocket" />
+    </CLASSES>
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/setuid" />
+    </NATIVE>
+    <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/annotations" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/annotations" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/apache-jsp" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/apache-jsp" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/apache-jstl" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/apache-jstl" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/fcgi" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/http2" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/jaspi" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/jndi" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/setuid" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/spring" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/websocket" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/JETTY/jetty-distribution-9.4.6.v20170531/lib/websocket" recursive="false" />
+  </library>
+</component>

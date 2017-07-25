@@ -3,47 +3,72 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-    <display-name>Webapp2</display-name>
+    <!--<context-param>-->
+        <!--<param-name>org.eclipse.jetty.servlet.jspPackagePrefix</param-name>-->
+        <!--<param-value>com.acme</param-value>-->
+    <!--</context-param>-->
+
+    <display-name>Servlet Jetty Web App</display-name>
 
     <!--<servlet>-->
-        <!--<servlet-name></servlet-name>-->
-        <!--<servlet-class>traitv.com.HelloServlet</servlet-class>-->
+        <!--<servlet-name>SimpleServlet</servlet-name>-->
+        <!--<servlet-class>traitv.com.servlets.HelloServlet</servlet-class>-->
+
+    <!--</servlet>-->
+    <!--<servlet>-->
+        <!--<servlet-name>V</servlet-name>-->
+        <!--<servlet-class>traitv.com.servlets.V1</servlet-class>-->
+
     <!--</servlet>-->
 
     <!--<servlet-mapping>-->
-        <!--<servlet-name>MyServlet</servlet-name>-->
-        <!--<url-pattern>/myservlet.do</url-pattern>-->
+        <!--<servlet-name>SimpleServlet</servlet-name>-->
+        <!--<url-pattern>simple.do/*</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>V</servlet-name>-->
+        <!--<url-pattern>v1</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!---->
+    <!--<servlet>-->
+        <!--<servlet-name>ProfileMysite</servlet-name>-->
+        <!--<servlet-class>traitv.com.servlets.V3</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>ProfileMysite</servlet-name>-->
+        <!--<url-pattern>profile/mysite2</url-pattern>-->
     <!--</servlet-mapping>-->
 
-    <servlet>
-        <servlet-name>SimpleServlet</servlet-name>
-        <servlet-class>traitv.com.HelloServlet</servlet-class>
 
-    </servlet>
-    <servlet>
-        <servlet-name>V</servlet-name>
-        <servlet-class>traitv.com.V1</servlet-class>
-
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>SimpleServlet</servlet-name>
-        <url-pattern>simple.do/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>V</servlet-name>
-        <url-pattern>v1</url-pattern>
-    </servlet-mapping>
-
-    <!--<servlet>-->
-        <!--&lt;!&ndash; class name &ndash;&gt;-->
-        <!--<servlet-name>WeatherServlet</servlet-name>-->
-        <!--&lt;!&ndash; package&ndash;&gt;-->
-        <!--<servlet-class>traitv.com.V2</servlet-class>-->
+    <!--jsp configuration-->
+    <!--<servlet id="jsp">-->
+        <!--<servlet-name>jsp</servlet-name>-->
+        <!--<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>-->
+        <!--&lt;!&ndash;<async-supported>true</async-supported>&ndash;&gt;-->
+        <!--<init-param>-->
+            <!--<param-name>logVerbosityLevel</param-name>-->
+            <!--<param-value>DEBUG</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>fork</param-name>-->
+            <!--<param-value>>false</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>keepgenerated</param-name>-->
+            <!--<param-value>>true</param-value>-->
+        <!--</init-param>-->
+        <!--<load-on-startup>0</load-on-startup>-->
     <!--</servlet>-->
+
     <!--<servlet-mapping>-->
-        <!--<servlet-name>WeatherServlet</servlet-name>-->
-        <!--&lt;!&ndash; address &ndash;&gt;-->
-        <!--<url-pattern>/v2/trai</url-pattern>-->
+        <!--<servlet-name>jsp</servlet-name>-->
+        <!--<url-pattern>*.jsp</url-pattern>-->
+        <!--<url-pattern>*.jspf</url-pattern>-->
+        <!--<url-pattern>*.jspx</url-pattern>-->
+        <!--<url-pattern>*.xsp</url-pattern>-->
+        <!--<url-pattern>*.JSP</url-pattern>-->
+        <!--<url-pattern>*.JSPF</url-pattern>-->
+        <!--<url-pattern>*.JSPX</url-pattern>-->
+        <!--<url-pattern>*.XSP</url-pattern>-->
     <!--</servlet-mapping>-->
 </web-app>
