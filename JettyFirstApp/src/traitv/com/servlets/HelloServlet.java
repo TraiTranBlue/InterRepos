@@ -15,6 +15,7 @@ import java.io.PrintWriter;
 public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
         System.out.println(request.getQueryString());
         response.setContentType("text/html");
         response.setStatus(HttpServletResponse.SC_OK);

@@ -10,12 +10,14 @@ import java.io.IOException;
 /**
  * Created by cpu11118-local on 21/07/2017.
  */
-@WebServlet("/getprofile/list")
+@WebServlet(urlPatterns = {"/getprofile/list", "/getprofile/all"})
 
 public class V2 extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.doGet(req, resp);
-        System.out.println("OK");
+        System.out.println(req.getContextPath());
+        System.out.println(req.getServletPath());
+        System.out.println(req.getPathInfo());
     }
 }

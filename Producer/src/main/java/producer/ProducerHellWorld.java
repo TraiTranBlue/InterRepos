@@ -18,7 +18,7 @@ public class ProducerHellWorld {
 
     public ProducerHellWorld() {
         this.connectionFactory = new ConnectionFactory();
-        this.connectionFactory.setHost("172.17.0.2");
+        this.connectionFactory.setHost("localhost");
 //        this.connectionFactory.setUsername("guest");
 //        this.connectionFactory.setPassword("guest");
 //        this.connectionFactory.setPort(MyContans.PROT);

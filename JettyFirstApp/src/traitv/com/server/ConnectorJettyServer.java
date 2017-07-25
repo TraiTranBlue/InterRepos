@@ -26,7 +26,7 @@ public class ConnectorJettyServer {
     }
 
     public static void main(String[] args) throws Exception {
-        Server server = new Server(8081);
+        Server server = new Server();
         ServerConnector connector = new ServerConnector(server);
         connector.setHost("127.0.0.1");
         connector.setPort(8080);

@@ -8,7 +8,7 @@
         <!--<param-value>com.acme</param-value>-->
     <!--</context-param>-->
 
-    <display-name>Webapp2</display-name>
+    <display-name>Servlet Jetty Web App</display-name>
 
     <!--<servlet>-->
         <!--<servlet-name>SimpleServlet</servlet-name>-->
