@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 /**
  * Created by cpu11118-local on 21/07/2017.
  */
-@WebServlet("/profile/mysite")
+@WebServlet("/v3")
 
 public class V3 extends HttpServlet{
     @Override

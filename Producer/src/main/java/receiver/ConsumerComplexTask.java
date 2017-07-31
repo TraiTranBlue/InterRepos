@@ -36,18 +36,27 @@ public class ConsumerComplexTask {
             System.out.println("Waiting for messaging complex task "+ nameTask +"....");
             final Channel channel = connection.createChannel();
             channel.queueDeclare(MyContans.QUEUE_NAME, false, false, false, null);
-            Consumer consumer = new DefaultConsumer(channel) {
-                public void handleDelivery(String s, Envelope envelope, AMQP.BasicProperties basicProperties, byte[] bytes) throws IOException {
-                    try {
-                        String message = new String(bytes, "UTF-8");
-                        System.out.println("[==>] Received " + nameTask +" '" + message + "'");
-                        doWorker();
-                    } finally {
-                        channel.basicAck(envelope.getDeliveryTag(), false);
-                    }
-                }
-            };
-            channel.basicConsume(MyContans.QUEUE_NAME, true, consumer);
+//            Consumer consumer = new DefaultConsumer(channel) {
+//                public void handleDelivery(String s, Envelope envelope, AMQP.BasicProperties basicProperties, byte[] bytes) throws IOException {
+//                    try {
+//                        String message = new String(bytes, "UTF-8");
+//                        System.out.println("[==>] Received " + nameTask +" '" + message + "'");
+//                        doWorker();
+//                    } finally {
+//                        channel.basicAck(envelope.getDeliveryTag(), false);
+//                    }
+//                }
+//            };
+//            channel.basicConsume(MyContans.QUEUE_NAME, true, consumer);
+            GetResponse response = channel.basicGet(MyContans.QUEUE_NAME, false);
+            if(response == null){
+                System.out.println("NULL");
+            }else {
+                String message = new String(response.getBody(), "UTF-8");
+                System.out.println("[==>] Received " + nameTask +" '" + message + "'");
+                doWorker();
+                channel.basicAck(response.getEnvelope().getDeliveryTag(), true);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (TimeoutException e) {

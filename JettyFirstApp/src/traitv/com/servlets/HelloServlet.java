@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 /**
  * Created by cpu11118-local on 21/07/2017.
  */
+@WebServlet("hello")
 public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
