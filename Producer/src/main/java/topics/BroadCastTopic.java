@@ -27,7 +27,10 @@ public class BroadCastTopic {
 
     public BroadCastTopic() {
         connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost(MyContans.LOCALHOST_RABBITMQ);
+        connectionFactory.setHost("localhost");
+        connectionFactory.setUsername("myuser");
+        connectionFactory.setPassword("mypass");
+        connectionFactory.setVirtualHost("/");
     }
 
     public void sendMessagmeByExchanges(String message){
@@ -35,8 +38,11 @@ public class BroadCastTopic {
             String key = generateRoutingKey();
             Connection connection = connectionFactory.newConnection();
             Channel channel = connection.createChannel();
-            channel.exchangeDeclare(MyContans.TOPIC_EXCHANGE_NAME, MyContans.TOPIC_EXCHANGE);
-            channel.basicPublish(MyContans.TOPIC_EXCHANGE_NAME, key, null, message.getBytes());
+            channel.exchangeDeclare("fanoutExchange", "fanout");
+            channel.queueDeclare("fanoutQueue22", true, false, false, null);
+//            channel.queueBind("topicQueue22", MyContans.TOPIC_EXCHANGE_NAME, "abc");
+            channel.basicPublish("fanoutExchange", "", null, message.getBytes());
+
             System.out.println("[x] Sending " + message + " with key: " + key);
             channel.close();
             connection.close();

@@ -32,7 +32,7 @@
     <!---->
     <!--<servlet>-->
         <!--<servlet-name>ProfileMysite</servlet-name>-->
-        <!--<servlet-class>traitv.com.servlets.V3</servlet-class>-->
+        <!--<servlet-cltraitv.com.servlets.Userserss.V3</servlet-class>-->
     <!--</servlet>-->
     <!--<servlet-mapping>-->
         <!--<servlet-name>ProfileMysite</servlet-name>-->
@@ -71,4 +71,14 @@
         <!--<url-pattern>*.JSPX</url-pattern>-->
         <!--<url-pattern>*.XSP</url-pattern>-->
     <!--</servlet-mapping>-->
+
+    <!--setup url web page-->
+    <servlet>
+        <servlet-name>home page</servlet-name>
+        <jsp-file>/pages/home.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>home page</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
 </web-app>

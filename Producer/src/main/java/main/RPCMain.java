@@ -15,6 +15,5 @@ public class RPCMain {
         System.out.println("Waiting for result ...");
         String result = clientPRC.call(String.valueOf(45));
         System.out.println(result);
-
     }
 }

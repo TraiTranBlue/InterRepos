@@ -16,7 +16,10 @@ public abstract class ConnectRPC {
 
     public ConnectRPC() {
         connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost(MyContans.HOST_RABBITMQ);
+        connectionFactory.setHost("localhost");
+        connectionFactory.setUsername("myuser");
+        connectionFactory.setPassword("mypass");
+        connectionFactory.setVirtualHost("/");
         try {
             connection = connectionFactory.newConnection();
         } catch (IOException e) {

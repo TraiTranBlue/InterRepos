@@ -13,9 +13,9 @@ import java.util.TimerTask;
  */
 public class TopicMain {
     public static void main (String[] args){
-        ReceiverInfoTopic.newInstance().receiverMessage();
-        ReceiverErrorTopic.newInstance().receiverMessage();
-        ReceiverWarningTopic.newInstance().receiverMessage();
+//        ReceiverInfoTopic.newInstance().receiverMessage();
+//        ReceiverErrorTopic.newInstance().receiverMessage();
+
         Timer timer = new Timer();
 
         timer.schedule(new TimerTask() {
@@ -23,7 +23,14 @@ public class TopicMain {
             @Override
             public void run() {
                 BroadCastTopic.newInstance().sendMessagmeByExchanges("Sending message " + (i++));
+//                ReceiverWarningTopic.newInstance().receiverMessage(i + "");
             }
         }, 0, 4000);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ReceiverWarningTopic.newInstance().receiverMessage("0");
     }
 }

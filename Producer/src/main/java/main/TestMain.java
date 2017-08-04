@@ -6,14 +6,10 @@ package main;
 public class TestMain {
 
     public static void main(String[] args){
-        Integer val = Integer.valueOf(20);
-        changeValue(val);
-        System.out.println(val);
+
     }
 
 
-    public static  Integer changeValue (Integer value){
-      value = 4321984;
-      return value;
-    }
+
+
 }

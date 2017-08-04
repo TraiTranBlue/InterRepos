@@ -13,10 +13,10 @@
     <title>Title</title>
 </head>
 <body>
-<form action="http://localhost:8080/JettyServletFirstApp_war_exploded/profile/mysite" method="post">
+<form action="http://localhost:8080/JettyServletFirstApp_war_exploded/helloservlet" method="get">
     <h1>Hello everybody, we coming Servlet and Jetty first app</h1>
     First Name: <input type = "text" name = "value1">
-    <br />
+    <br /> <br/>
     Last Name: <input type = "text" name = "value2" />
     <input type = "submit" value = "Submit" />
 </form>
