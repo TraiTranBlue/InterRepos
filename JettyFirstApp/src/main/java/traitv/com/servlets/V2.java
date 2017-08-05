@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by cpu11118-local on 21/07/2017.
  */
-@WebServlet(urlPatterns = {"/getprofile/list", "/getprofile/all"})
+@WebServlet(urlPatterns = {"v2"})
 
 public class V2 extends HttpServlet{
     @Override

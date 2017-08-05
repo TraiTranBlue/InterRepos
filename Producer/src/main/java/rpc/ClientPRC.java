@@ -1,9 +1,6 @@
 package rpc;
 
-import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.DefaultConsumer;
-import com.rabbitmq.client.Envelope;
+import com.rabbitmq.client.*;
 import utils.MyContans;
 
 import java.io.IOException;
@@ -27,7 +24,6 @@ public class ClientPRC extends ConnectRPC {
         try {
             final Channel channel = connection.createChannel();
             responseQueueName = channel.queueDeclare().getQueue();
-
             channel.basicPublish("", MyContans.RPC_QUEUE_NAME,
                     new AMQP.BasicProperties().builder()
                             .correlationId(correlationId)
@@ -44,6 +40,7 @@ public class ClientPRC extends ConnectRPC {
                     channel.basicAck(envelope.getDeliveryTag(), false);
                 }
             });
+
             return respone.take();
         } catch (IOException e) {
             e.printStackTrace();

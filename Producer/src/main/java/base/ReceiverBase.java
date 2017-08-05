@@ -11,6 +11,9 @@ public abstract class ReceiverBase implements  Receiver{
 
     public ReceiverBase() {
         connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost(MyContans.LOCALHOST_RABBITMQ);
+        connectionFactory.setHost("localhost");
+        connectionFactory.setUsername("myuser");
+        connectionFactory.setPassword("mypass");
+        connectionFactory.setVirtualHost("/");
     }
 }

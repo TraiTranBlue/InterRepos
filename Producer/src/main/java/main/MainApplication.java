@@ -4,8 +4,10 @@ package main;
 import producer.ProducerHellWorld;
 import receiver.ConsumerComplexTask;
 
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.UUID;
 
 /**
  * Created by cpu11118-local on 15/06/2017.
@@ -25,5 +27,7 @@ public class MainApplication {
                 ProducerHellWorld.newInstance().sendMessage("Sending message " + (i++));
             }
         }, 0, 4000);
+
     }
+
 }

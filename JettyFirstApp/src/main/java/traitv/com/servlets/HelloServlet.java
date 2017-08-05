@@ -12,9 +12,10 @@ import java.io.PrintWriter;
 /**
  * Created by cpu11118-local on 21/07/2017.
  */
-@WebServlet(name = "HelloServlet", urlPatterns = {"servlet/hello"})
-public class V1 extends HttpServlet {
+@WebServlet(urlPatterns = {"helloservlet"})
+public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
         System.out.println(request.getQueryString());
         response.setContentType("text/html");
