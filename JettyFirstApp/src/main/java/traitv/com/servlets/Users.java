@@ -8,6 +8,8 @@ import org.bson.Document;
 import org.json.JSONObject;
 import traitv.com.dbmanager.MongoContans;
 import traitv.com.dbmanager.MongodDBManager;
+import traitv.com.dbmanager.models.User;
+import traitv.com.dbmanager.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,12 +32,13 @@ public class Users extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        if(req.getParameter("usersId") != null){
-
+        if(req.getParameter("name") != null){
+            User user = UserService.getInstance().getUserContainName(req.getParameter("name"));
+            writer.print(user.toString());
         }else {
             writer.println("NULL");
         }
-        FindIterable<Document> documents = MongodDBManager.newInstance().findAll(MongoContans.USERS_COLLECTION);
+
 
     }
 
@@ -43,6 +46,7 @@ public class Users extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(Response.OK);
+        resp.setContentType("application/json");
         PrintWriter writer = resp.getWriter();
         StringBuffer jb = new StringBuffer();
         String line = null;
