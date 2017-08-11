@@ -1,5 +1,6 @@
 package traitv.com.servlets;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.mongodb.Block;
 import com.mongodb.client.FindIterable;
@@ -18,25 +19,33 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Created by cpu11118-local on 21/07/2017.
  */
 public class Users extends HttpServlet {
-    private Gson mGson;
+
+    private ObjectMapper mapper;
+
     @Override
     public void init() throws ServletException {
-        mGson = new Gson();
+        mapper = new ObjectMapper();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
+        resp.setContentType("application/json");
+        resp.setStatus(Response.OK);
         if(req.getParameter("name") != null){
-            User user = UserService.getInstance().getUserContainName(req.getParameter("name"));
-            writer.print(user.toString());
+            List<User> users = UserService.getInstance().getListUserWithName(req.getParameter("name"));
+            writer.print(mapper.writeValueAsString(users.toArray()));
+        }else if(req.getParameter("id") != null) {
+            User user = UserService.getInstance().getUser(req.getParameter("id"));
+            writer.print(mapper.writeValueAsString(user));
         }else {
-            writer.println("NULL");
+            writer.print(false);
         }
 
 

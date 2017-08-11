@@ -82,7 +82,7 @@ public class ConnectorJettyServer {
         ServletContextHandler servletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
         servletContextHandler.setContextPath("/123cs.vng");
         servletContextHandler.addServlet(new ServletHolder(new HelloServlet()), "/hello");
-        servletContextHandler.addServlet(new ServletHolder(new Users()), "/users");
+        servletContextHandler.addServlet(new ServletHolder(new Users()), "/user/profile");
 
         //Hello handler
         HelloHandler helloHanlder = new HelloHandler();
