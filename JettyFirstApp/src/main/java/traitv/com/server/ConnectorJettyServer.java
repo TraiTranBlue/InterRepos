@@ -9,6 +9,7 @@ import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.json.JSONObject;
+import traitv.com.dbmanager.services.UserService;
 import traitv.com.hanlder.HelloHandler;
 import traitv.com.servlets.HelloServlet;
 import traitv.com.servlets.Users;
@@ -83,6 +84,7 @@ public class ConnectorJettyServer {
         servletContextHandler.setContextPath("/123cs.vng");
         servletContextHandler.addServlet(new ServletHolder(new HelloServlet()), "/hello");
         servletContextHandler.addServlet(new ServletHolder(new Users()), "/user/profile");
+
 
         //Hello handler
         HelloHandler helloHanlder = new HelloHandler();

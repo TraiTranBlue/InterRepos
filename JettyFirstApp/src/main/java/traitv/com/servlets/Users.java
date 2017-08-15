@@ -1,11 +1,14 @@
 package traitv.com.servlets;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.mongodb.Block;
 import com.mongodb.client.FindIterable;
 import com.sun.mail.iap.Response;
 import org.bson.Document;
+import org.bson.types.ObjectId;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import traitv.com.dbmanager.MongoContans;
 import traitv.com.dbmanager.MongodDBManager;
@@ -34,21 +37,37 @@ public class Users extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         PrintWriter writer = resp.getWriter();
         resp.setContentType("application/json");
         resp.setStatus(Response.OK);
-        if(req.getParameter("name") != null){
-            List<User> users = UserService.getInstance().getListUserWithName(req.getParameter("name"));
-            writer.print(mapper.writeValueAsString(users.toArray()));
-        }else if(req.getParameter("id") != null) {
-            User user = UserService.getInstance().getUser(req.getParameter("id"));
-            writer.print(mapper.writeValueAsString(user));
-        }else {
+        if (req.getParameter("name") != null) {
+            List<Document> users = UserService.getInstance().getListUserWithName(req.getParameter("name"));
+            JSONObject result = new JSONObject();
+            JSONArray jsonArray = new JSONArray();
+            for(Document document : users){
+                JSONObject object = new JSONObject(document.toJson());
+                jsonArray.put(object);
+            }
+            result.put("result", jsonArray);
+            result.put("size", users.size());
+            writer.print(result.toString());
+        } else if (req.getParameter("id") != null) {
+            try {
+                Document user = UserService.getInstance().getUser(req.getParameter("id"));
+                if (user != null) {
+                    writer.print(user.toJson());
+                    System.out.println(user.getObjectId("_id").toString());
+                } else
+                    writer.print("NULL");
+            }catch (RuntimeException e){
+                e.printStackTrace();
+                writer.print("Server ERRORRRRRRRRRRRRRRRRRRR");
+            }
+
+        } else {
             writer.print(false);
         }
-
-
     }
 
 

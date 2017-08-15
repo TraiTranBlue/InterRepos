@@ -1,15 +1,17 @@
 package traitv.com.dbmanager;
 
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
+import com.mongodb.*;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.InsertManyOptions;
+import org.bson.BsonDocument;
+import org.bson.BsonValue;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
+import java.net.UnknownHostException;
 import java.util.List;
 
 /**
@@ -23,19 +25,27 @@ public class MongodDBManager {
     private MongoDatabase mongoDatabase;
 
     public static MongodDBManager newInstance() {
-        if(mongodDBManager == null){
+        if (mongodDBManager == null) {
             mongodDBManager = new MongodDBManager();
         }
         return mongodDBManager;
     }
 
     public MongodDBManager() {
-        getConnectDB();
+        try {
+            getConnectDB();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
     }
 
-    public MongoClient getConnectDB(){
-        if(mongodClient == null){
-            mongodClient = new MongoClient(new MongoClientURI(MongoContans.URL_SERVER));
+    public MongoClient getConnectDB() throws UnknownHostException {
+        if (mongodClient == null) {
+            MongoClientOptions.Builder optionsBuilder = MongoClientOptions.builder();
+            optionsBuilder.connectTimeout(60000);
+            optionsBuilder.socketTimeout(60000);
+            optionsBuilder.serverSelectionTimeout(60000);
+            mongodClient = new MongoClient(new MongoClientURI(MongoContans.URL_SERVER, optionsBuilder));
             mongoDatabase = mongodClient.getDatabase(MongoContans.DATA_NAME);
             System.out.println("Address connect at path :" + mongodClient.getConnectPoint());
             System.out.println("Address DB name :" + mongodClient.getDatabase(MongoContans.DATA_NAME).getName());
@@ -43,56 +53,59 @@ public class MongodDBManager {
         return mongodClient;
     }
 
-    public MongoCollection getCollection(String collectionName){
+    public MongoCollection getCollection(String collectionName)throws MongoException {
         return mongoDatabase.getCollection(collectionName);
     }
 
 
-    public void inserOne(String collectionName, Document document){
+    public void inserOne(String collectionName, Document document) {
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         collection.insertOne(document);
         System.out.println("Insert one document into " + collection.getNamespace());
     }
 
-    public void inserMany(String collectionName, List<Document> documents, InsertManyOptions manyOptions){
+    public void inserMany(String collectionName, List<Document> documents, InsertManyOptions manyOptions) {
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         collection.insertMany(documents, manyOptions);
         System.out.println("Insert many document into " + collection);
     }
 
-    public void inserMany(String collectionName, List<Document> documents){
+    public void inserMany(String collectionName, List<Document> documents)
+    {
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         collection.insertMany(documents);
         System.out.println("Insert many document into " + collection);
     }
 
-    public Document findOne(String collectionName){
+    public Document findOne(String collectionName) {
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         return (Document) collection.find().first();
     }
 
-    public FindIterable findAll(String collectionName){
+    public FindIterable findAll(String collectionName) {
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         return collection.find();
     }
 
     /**
      * Query document by collection name and param filter
+     *
      * @param collectionName
      * @param filter
      * @return FindIterable document
      */
-    public FindIterable findMany(String collectionName, Bson filter){
+    public FindIterable findMany(String collectionName, Bson filter) {
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         return collection.find(filter);
     }
 
     /**
      * Check collection has document
+     *
      * @param collectionName
      * @return True if has document other case return false
      */
-    public boolean checkCollectionExistsDocument(String collectionName){
+    public boolean checkCollectionExistsDocument(String collectionName) {
         MongoCollection collection = mongoDatabase.getCollection(collectionName);
         return collection.find().first() != null;
     }
