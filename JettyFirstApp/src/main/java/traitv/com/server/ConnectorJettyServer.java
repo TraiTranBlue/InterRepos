@@ -1,5 +1,7 @@
 package traitv.com.server;
 
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.GetMethod;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
@@ -9,7 +11,6 @@ import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.json.JSONObject;
-import traitv.com.dbmanager.services.UserService;
 import traitv.com.hanlder.HelloHandler;
 import traitv.com.servlets.HelloServlet;
 import traitv.com.servlets.Users;
@@ -28,7 +29,8 @@ public class ConnectorJettyServer {
         JSONObject object = new JSONObject();
         Server server = new Server();
         ServerConnector connector = new ServerConnector(server);
-        connector.setHost("10.199.35.210");
+//        connector.setHost("10.199.35.210");
+        connector.setHost("localhost");
         connector.setPort(8080);
         connector.setIdleTimeout(30000);
         server.addConnector(connector);

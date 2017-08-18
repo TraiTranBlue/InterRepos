@@ -1,0 +1,154 @@
+5lglzCDcxMPnZKLmCZzp+A==
+c9et0T3FWJx1m9lMJy5G2Q==
+QT4yclD4hJLwp8tz9ejPug==
+-e RABBITMQ_ERLANG_COOKIE='RQWDOECCOBFCZTSOCBEP' rabbitmq:3
+docker run -d --hostname rabbit1 --name rabbit1 -e RABBITMQ_ERLANG_COOKIE='RQWDOECCOBFCZTSOCBEP' rabbitmq:3
+
+sudo docker run -it --rm --link rabbit1:rabbit1 -e RABBITMQ_ERLANG_COOKIE='RQWDOECCOBFCZTSOCBEP' rabbitmq:3 bash
+
+rabbit@b9445bb18163
+rabbit@76fe73d21191
+rabbit@9b9b4dee4782
+
+sudo docker run -it --rm --link some-rabbit:my-rabbit -e RABBITMQ_ERLANG_COOKIE='secret cookie here' -e RABBITMQ_NODENAME=rabbit1@rabbit1 RABBITMQ_NODENAME=rabbit2@rabbit2 RABBITMQ_NODENAME=rabbit3@rabbit3 rabbitmq:3 bash
+
+Docker Hub
+traitv2002
+plt87764422
+
+
+ "API used from localhost allows all calls":
+    - who:
+      - ip: "127.0.0.1/8"
+      - acl: admin
+    - what:
+      - "*"
+      - "!stop"
+      - "!start"
+
+1DVa2IeOQwj332OAcQsq8rfNpqzoVXpy
+DqyaTv2MjexCvDIRiTkkw63Kx1oa5keB validate
+
+
+bizweb
+{
+          "email":"emailcontact",
+          "first_name" : "fullname",
+          "last_name": "fullname",
+          "note":"notes",
+          "created_on":"createddateno",
+          "modified_on": "lastupdatedateno",
+          "addresses": "addressinfo",
+          "address1":"address",
+          "country_code":"country_code",
+          "country_name":"country_name",
+          "province":"province_name",
+          "province_code":"province_code",
+          "zip":"zip_code"
+        }
+
+profile
+{
+  "fullname": "",
+  "jobtitle": "chức danh nào",
+  "phonecontact": [],
+  "emailcontact": [],
+  "addressinfo": [
+    {
+      "address": "",
+      "country_code": "",
+      "country_name": "",
+      "province_name": "",
+      "province_code": "",
+      "zip_code": ""
+    }
+  ],
+  "socialinfo": [],
+  "gender": "",
+  "birthday": "",
+  "cidinfo": [],
+  "identifyinfo": [],
+  "notes": [
+    {
+      "value": "ghi chú note"
+    }
+  ],
+  "customfield": [],
+  "categories_list": [],
+  "source_contact_id": "",
+  "createdby": "",
+  "createddateno": "",
+  "lastupdateby": "",
+  "lastupdatedateno": "",
+  "tenant_id": "",
+  "attachfile": [],
+  "avatar": ""
+}
+config
+{
+  "email": {
+    "filedmap": "emailcontact",
+    "type": "jsonArray",
+    "content": {
+      "datatype": "Công ty",
+      "value": "bangnk@vng.com.vn"
+    }
+  },
+  "addresses": {
+    "filedmap": "addressinfo",
+    "type": "jsonArray",
+    "content": {
+      "address": "",
+      "country_code": "",
+      "country_name": "",
+      "province_name": "",
+      "province_code": "",
+      "zip_code": ""
+    }
+  },
+  "note":{
+    "filedmap": "notes",
+    "type": "jsonArray",
+    "content": {
+      "value": "ghi chú note"
+    }
+  },
+  "country_code":{
+    "filedmap": "country_code",
+    "type": "object",
+    "content": null
+  },
+  "country_name":{
+    "filedmap": "country_name",
+    "type": "object",
+    "content": null
+  },
+  "province":{
+    "filedmap": "province_name",
+    "type": "object",
+    "content": null
+  },
+  "province_code":{
+    "filedmap": "province_code",
+    "type": "object",
+    "content": null
+  },
+  "zip":{
+    "filedmap": "zip_code",
+    "type": "object",
+    "content": null
+  },
+  "phone":{
+    "filedmap":"phonecontact",
+    "type": "jsonArray",
+    "content":{
+            "datatype" : "Cá nhân",
+            "value" : ""
+        }
+  },
+  "address1":{
+    "filedmap":"address",
+    "type": "object",
+    "content":null
+  }
+}
