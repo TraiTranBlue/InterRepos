@@ -29,9 +29,9 @@ public class ConnectorJettyServer {
         JSONObject object = new JSONObject();
         Server server = new Server();
         ServerConnector connector = new ServerConnector(server);
-//        connector.setHost("10.199.35.210");
-        connector.setHost("localhost");
-        connector.setPort(8080);
+        connector.setHost("10.199.35.210");
+//        connector.setHost("localhost");
+        connector.setPort(8888);
         connector.setIdleTimeout(30000);
         server.addConnector(connector);
 
